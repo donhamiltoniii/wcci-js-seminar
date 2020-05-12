@@ -70,6 +70,7 @@ ul {
 
 .hidden {
   display: none;
+  transition: 0.3s;
 }
 
 /* App Styles */
@@ -116,10 +117,12 @@ ul {
 .details__title {
   display: flex;
   justify-content: space-between;
+  transition: 0.3s;
 }
 
 .details__list {
   padding: 1rem;
+  transition: 0.3s;
 }
 
 .details__list li {
