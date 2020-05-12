@@ -1,0 +1,188 @@
+/* Font imports */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+/* Style Reset Rules */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  --xiketic: #100007;
+  --dark-purple: #200116;
+  --dark-sienna: #2d0605;
+  --grey: #ddd;
+  --medium-aquamarine: #80d39b;
+  --tyrian-purple: #4c0827;
+  font: 20px/1 Montserrat, sans-serif;
+}
+
+a {
+  color: var(--dark-purple);
+  text-decoration: none;
+}
+
+article {
+  margin-bottom: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  border-bottom: 1px solid var(--grey);
+  color: var(--tyrian-purple);
+  font-family: Pacifico, sans-serif;
+  font-weight: 700;
+  line-height: 1.618em;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.325rem;
+}
+
+img {
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Utility Classes */
+.btn {
+  background-color: var(--xiketic);
+  border: none;
+  color: white;
+  font-size: 0.5rem;
+  padding: 0.5rem;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 30rem;
+  width: 90%;
+}
+
+.hidden {
+  display: none;
+}
+
+/* App Styles */
+.about {
+  display: flex;
+}
+
+.about__avatar-container {
+  align-items: center;
+  border: 3px solid var(--xiketic);
+  border-radius: 50%;
+  height: 5rem;
+  margin-right: 1rem;
+  width: 5rem;
+  overflow: hidden;
+}
+
+.about__user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.comments__list {
+  padding: 1rem;
+}
+
+.comments__list-item {
+  border-bottom: 1px solid var(--medium-aquamarine);
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+.comments__list-item:last-child {
+  border-bottom: none;
+}
+
+.details__title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details__list {
+  padding: 1rem;
+}
+
+.details__list li {
+  border-bottom: 1px solid var(--medium-aquamarine);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.details__list li:last-child {
+  border: none;
+}
+
+.main-footer {
+  align-items: center;
+  background-color: var(--xiketic);
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem 5rem;
+}
+
+.main-header {
+  align-items: center;
+  border-bottom: 1px solid var(--medium-aquamarine);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-bottom: 3rem;
+}
+
+.main-header__logo h1 {
+  color: var(--tyrian-purple);
+  font-size: 1.5rem;
+}
+
+.main-header__logo h2 {
+  font-size: 0.875rem;
+}
+
+.main-header__nav {
+  position: relative;
+}
+
+.main-header__nav-list {
+  position: absolute;
+  left: 0;
+  top: 1.5rem;
+}
+
+.posts__add-post {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.posts__add-post > *:not(h4) {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.posts__add-post > h4 {
+  margin-bottom: 1em;
+}
+
+.post__list-item {
+  background-color: var(--grey);
+  padding: 1rem;
+}
+
+.post__list-item:nth-child(even) {
+  background-color: white;
+  padding: 1rem;
+}

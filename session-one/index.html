@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>We Can COVID</title>
+    <link rel="stylesheet" href="./assets/styles/styles.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <section class="main-header__logo">
+        <h1>We Can COVID</h1>
+        <h2>Continued Learning While Everything Sucks</h2>
+      </section>
+      <nav class="main-header__nav">
+        <button class="main-header__nav-button btn">MENU</button>
+        <ul class="main-header__nav-list hidden">
+          <li><a href="#about">About</a></li>
+          <li><a href="#details">Details</a></li>
+          <li><a href="#friends">Friends</a></li>
+          <li><a href="#posts">Posts</a></li>
+          <li><a href="#comments">Comments</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main-content">
+      <div class="container">
+        <article id="about" class="about">
+          <figure class="about__avatar-container">
+            <img src="" alt="User Avatar" />
+          </figure>
+          <section class="about__user-info">
+            <h3>Hey, {{userName}}</h3>
+            <h4>{{hometown}}</h4>
+          </section>
+        </article>
+        <article id="details" class="details">
+          <h3 class="details__title"><span>Details</span><span>+</span></h3>
+          <ul class="details__list">
+            <li>Favorite Color: Green</li>
+            <li>Favorite Food: Tacos</li>
+            <li>Favorite Place: Columbus, OH</li>
+          </ul>
+        </article>
+        <article id="friends" class="friends">
+          <h3>Friends</h3>
+          <ul class="friends__list"></ul>
+        </article>
+        <article id="posts" class="posts">
+          <h3>Posts</h3>
+          <ul class="posts__list">
+            <li class="post__list-item">
+              <h4>Hey Y'all!</h4>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Veritatis corrupti culpa minima saepe magni? Quisquam odio,
+                possimus recusandae doloremque quasi ab eius atque delectus
+                corporis, laboriosam maxime voluptatibus sed accusantium.
+              </p>
+            </li>
+            <li class="post__list-item">
+              <h4>JS Is Awesome</h4>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Veritatis corrupti culpa minima saepe magni? Quisquam odio,
+                possimus recusandae doloremque quasi ab eius atque delectus
+                corporis, laboriosam maxime voluptatibus sed accusantium.
+              </p>
+            </li>
+          </ul>
+          <div class="posts__add-post">
+            <h4>Add New Post</h4>
+            <input
+              type="text"
+              class="posts__title-input"
+              placeholder="Title *"
+              required
+            />
+            <textarea
+              class="posts__content-input"
+              cols="30"
+              placeholder="Content *"
+              required
+              rows="10"
+            ></textarea>
+            <button class="posts__submit btn">Add Post</button>
+          </div>
+        </article>
+        <article class="comments">
+          <h3>Comments</h3>
+          <ul class="comments__list">
+            <li class="comments__list-item">
+              <h5>{{friendName}}</h5>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis,
+                enim eos. Id esse ipsam odit quisquam nemo quod, nesciunt quas
+                architecto culpa quia consequatur libero, minus sit nisi, magni
+                rerum?
+              </p>
+            </li>
+            <li class="comments__list-item">
+              <h5>{{friendName}}</h5>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis,
+                enim eos. Id esse ipsam odit quisquam nemo quod, nesciunt quas
+                architecto culpa quia consequatur libero, minus sit nisi, magni
+                rerum?
+              </p>
+            </li>
+            <li class="comments__list-item">
+              <h5>{{friendName}}</h5>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis,
+                enim eos. Id esse ipsam odit quisquam nemo quod, nesciunt quas
+                architecto culpa quia consequatur libero, minus sit nisi, magni
+                rerum?
+              </p>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </main>
+    <footer class="main-footer">
+      <small>&copy; {{copyRightYear}} WCCOVID</small>
+    </footer>
+    <script src="./assets/scripts/app.js"></script>
+  </body>
+</html>
