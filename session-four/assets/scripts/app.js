@@ -7,7 +7,7 @@ import Main from "./components/main/main.component";
 
 const App = new Component({
   selector: "#root",
-  state: state(this),
+  state,
   template() {
     return `
       <div class="app">

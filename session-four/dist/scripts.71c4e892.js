@@ -156,6 +156,27 @@ var Component = /*#__PURE__*/function () {
 
 var _default = Component;
 exports.default = _default;
+},{}],"assets/scripts/utils/render-application.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var RenderApplication = {
+  render: function render(selector, content) {
+    try {
+      var element = document.querySelector(selector);
+      element.innerHTML = content;
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+};
+var _default = RenderApplication;
+exports.default = _default;
 },{}],"assets/scripts/state-management/state-object.js":[function(require,module,exports) {
 "use strict";
 
@@ -164,23 +185,33 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var handler = function handler(instance) {
+var _renderApplication = _interopRequireDefault(require("../utils/render-application"));
+
+var _app = _interopRequireDefault(require("../app"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var handler = function handler() {
   return {
     get: function get(obj, prop) {
       if (["[object Object]", "[object Array]"].indexOf(obj[prop].toString()) > -1) {
-        return new Proxy(obj[prop], handler(instance));
+        return new Proxy(obj[prop], handler());
       }
 
       return obj[prop];
     },
     set: function set(obj, prop, value) {
       obj[prop] = value;
-      instance.render();
+
+      _renderApplication.default.render("#root", _app.default.render());
+
       return true;
     },
     deleteProperty: function deleteProperty(obj, prop) {
       delete obj[prop];
-      instance.render();
+
+      _renderApplication.default.render("#root", _app.default.render());
+
       return true;
     }
   };
@@ -192,13 +223,10 @@ var state = {
   siteSubtitle: "Getting through this together",
   siteTitle: "We Can COVID"
 };
-
-var _default = function _default(component) {
-  return new Proxy(state, handler(component));
-};
-
+var stateProxy = new Proxy(state, handler());
+var _default = stateProxy;
 exports.default = _default;
-},{}],"assets/scripts/components/main-nav/main-nav.component.js":[function(require,module,exports) {
+},{"../utils/render-application":"assets/scripts/utils/render-application.js","../app":"assets/scripts/app.js"}],"assets/scripts/components/main-nav/main-nav.component.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -239,7 +267,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Header = new _component.default({
   selector: ".app",
-  state: (0, _stateObject.default)(void 0),
+  state: _stateObject.default,
   template: function template(data) {
     return "\n      <header class=\"main-header\">\n        <section class=\"main-header__logo\">\n          <h1>".concat(data.siteTitle, "</h1>\n          <h2>").concat(data.siteSubtitle, "</h2>\n        </section>\n        ").concat(_mainNav.default.render(), "\n      </header>\n    ");
   }
@@ -262,7 +290,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Main = new _component.default({
   selector: ".app",
-  state: (0, _stateObject.default)(void 0),
+  state: _stateObject.default,
   template: function template(data) {
     return "\n      <main class=\"main-content\">\n        <section class=\"message\">\n            <p class=\"message-content\">".concat(data.message, "</p>\n            <input class=\"message-input\" type=\"text\" />\n            <button class=\"message-button\">").concat(data.buttonLabel, "</button>\n        </section>\n      </main>\n    ");
   }
@@ -289,40 +317,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var App = new _component.default({
   selector: "#root",
-  state: (0, _stateObject.default)(void 0),
+  state: _stateObject.default,
   template: function template() {
     return "\n      <div class=\"app\">\n        ".concat(_header.default.render(), "\n        ").concat(_main.default.render(), "\n      </div>\n    ");
   }
 });
 var _default = App;
 exports.default = _default;
-},{"./utils/component":"assets/scripts/utils/component.js","./state-management/state-object":"assets/scripts/state-management/state-object.js","./components/header/header.component":"assets/scripts/components/header/header.component.js","./components/main/main.component":"assets/scripts/components/main/main.component.js"}],"assets/scripts/utils/render-application.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var RenderApplication = {
-  render: function render(selector, content) {
-    try {
-      var element = document.querySelector(selector);
-      element.innerHTML = content;
-      return true;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  }
-};
-var _default = RenderApplication;
-exports.default = _default;
-},{}],"assets/scripts/index.js":[function(require,module,exports) {
+},{"./utils/component":"assets/scripts/utils/component.js","./state-management/state-object":"assets/scripts/state-management/state-object.js","./components/header/header.component":"assets/scripts/components/header/header.component.js","./components/main/main.component":"assets/scripts/components/main/main.component.js"}],"assets/scripts/index.js":[function(require,module,exports) {
 "use strict";
 
 var _app = _interopRequireDefault(require("./app"));
-
-var _main = _interopRequireDefault(require("./components/main/main.component"));
 
 var _renderApplication = _interopRequireDefault(require("./utils/render-application"));
 
@@ -335,13 +340,13 @@ document.body.addEventListener("click", function (event) {
     var messageButton = event.target;
     var messageInput = messageButton.parentElement.querySelector(".message-input");
     var updatedMessage = messageInput.value;
-    (0, _stateObject.default)(_main.default).message = updatedMessage;
-    console.log((0, _stateObject.default)(_main.default));
+    _stateObject.default.message = updatedMessage;
+    console.log(_stateObject.default);
   }
 });
 
 _renderApplication.default.render("#root", _app.default.render());
-},{"./app":"assets/scripts/app.js","./components/main/main.component":"assets/scripts/components/main/main.component.js","./utils/render-application":"assets/scripts/utils/render-application.js","./state-management/state-object":"assets/scripts/state-management/state-object.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./app":"assets/scripts/app.js","./utils/render-application":"assets/scripts/utils/render-application.js","./state-management/state-object":"assets/scripts/state-management/state-object.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -369,7 +374,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55105" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53146" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

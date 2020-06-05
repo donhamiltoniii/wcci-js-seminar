@@ -1,21 +1,24 @@
-const handler = function (instance) {
+import RenderApp from "../utils/render-application";
+import App from "../app";
+
+const handler = function () {
   return {
     get(obj, prop) {
       if (
         ["[object Object]", "[object Array]"].indexOf(obj[prop].toString()) > -1
       ) {
-        return new Proxy(obj[prop], handler(instance));
+        return new Proxy(obj[prop], handler());
       }
       return obj[prop];
     },
     set(obj, prop, value) {
       obj[prop] = value;
-      instance.render();
+      RenderApp.render("#root", App.render());
       return true;
     },
     deleteProperty(obj, prop) {
       delete obj[prop];
-      instance.render();
+      RenderApp.render("#root", App.render());
       return true;
     },
   };
@@ -28,4 +31,6 @@ const state = {
   siteTitle: "We Can COVID",
 };
 
-export default (component) => new Proxy(state, handler(component));
+const stateProxy = new Proxy(state, handler());
+
+export default stateProxy;

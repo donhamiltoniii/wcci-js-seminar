@@ -4,7 +4,7 @@ import state from "../../state-management/state-object";
 
 const Main = new Component({
   selector: ".app",
-  state: state(this),
+  state,
   template(data) {
     return `
       <main class="main-content">

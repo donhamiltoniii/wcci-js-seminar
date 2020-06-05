@@ -6,7 +6,7 @@ import MainNav from "../main-nav/main-nav.component";
 
 const Header = new Component({
   selector: ".app",
-  state: state(this),
+  state,
   template(data) {
     return `
       <header class="main-header">

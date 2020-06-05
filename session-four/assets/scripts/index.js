@@ -1,5 +1,4 @@
 import App from "./app";
-import Main from "./components/main/main.component";
 import RenderApplication from "./utils/render-application";
 
 import state from "./state-management/state-object";
@@ -13,9 +12,9 @@ document.body.addEventListener("click", (event) => {
 
     const updatedMessage = messageInput.value;
 
-    state(Main).message = updatedMessage;
+    state.message = updatedMessage;
 
-    console.log(state(Main));
+    console.log(state);
   }
 });
 
