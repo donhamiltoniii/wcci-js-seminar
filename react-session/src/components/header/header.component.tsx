@@ -1,6 +1,10 @@
 import React from "react";
 
-const Header = ({ subtitle }) => {
+interface HeaderProps {
+  subtitle: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ subtitle }) => {
   return (
     <header className="header header--main">
       <div className="container">

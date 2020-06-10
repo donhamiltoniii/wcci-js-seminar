@@ -49,7 +49,7 @@ import Footer from "./components/footer/footer.component";
 import Header from "./components/header/header.component";
 import MainContent from "./components/main-content/main-content.component";
 
-const App = () => {
+const App: React.FC = () => {
   const [posts, setPosts] = React.useState([]);
   const [copyright, setCopyright] = React.useState(
     `&copy; ${new Date().getFullYear()} Dondon Develops`
