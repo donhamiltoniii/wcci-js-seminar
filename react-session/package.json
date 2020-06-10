@@ -4,14 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel public/index.html"
   },
   "keywords": [],
   "author": "Don Hamilton III <donhamiltoniii@gmail.com> (https://donhamiltoniii.com)",
   "license": "ISC",
   "dependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
     "parcel": "^1.12.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "sass": "^1.26.8",
+    "typescript": "^3.9.5"
   }
 }
