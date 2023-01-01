@@ -11,6 +11,6 @@
   "author": "Don Hamilton III <donhamiltoniii@gmail.com> (https://donhamiltoniii.com)",
   "license": "ISC",
   "dependencies": {
-    "parcel": "^1.12.4"
+    "parcel": "^2.8.2"
   }
 }
