@@ -12,7 +12,7 @@
   "dependencies": {
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
-    "parcel": "^1.12.4",
+    "parcel": "^2.8.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
